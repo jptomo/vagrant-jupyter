@@ -1,0 +1,13 @@
+---
+# vim: ft=yaml st=2 sts=2 sw=2 tw=0:
+
+local_home: "{{lookup('env', 'HOME')}}"
+work_dir: "/opt/work"
+
+# python3
+python_ver: "3.4.4"
+python_bin_ver: "3.4"
+python_src_hash: "bc93e944025816ec360712b4c42d8d5f729eaed2b26585e9bc8844f93f0c382e"
+python_bin_path: "/opt/python/{{python_ver}}/bin/python{{python_bin_ver}}"
+python_venv_prefix: "{{local_home}}/pyvenv{{python_ver|replace('.', '')}}"
+tensorflow_whl: "https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp34-none-linux_x86_64.whl"

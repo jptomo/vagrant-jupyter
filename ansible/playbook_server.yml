@@ -1,0 +1,7 @@
+---
+# vim: ft=yaml st=2 sts=2 sw=2 tw=0:
+
+- hosts: localhost
+  gather_facts: no
+  roles:
+    - server

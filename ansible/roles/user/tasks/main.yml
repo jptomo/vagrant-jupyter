@@ -1,0 +1,32 @@
+---
+# vim: ft=yaml st=2 sts=2 sw=2 tw=0:
+
+# initialize python venv and jupyter
+
+- command: "{{python_bin_path}} -m venv --clear --without-pip {{python_venv_prefix}}"
+  args:
+    chdir: "{{local_home}}"
+
+- command: "bin/python{{python_bin_ver}} -m ensurepip"
+  args:
+    chdir: "{{python_venv_prefix}}"
+
+- command: "bin/python{{python_bin_ver}} -m pip install -U setuptools pip"
+  args:
+    chdir: "{{python_venv_prefix}}"
+
+- command: >-
+    bin/python{{python_bin_ver}} -m pip --no-cache-dir install -I -U
+    jupyter numpy pandas scipy scikit-learn
+  args:
+    chdir: "{{python_venv_prefix}}"
+
+- command: "bin/python{{python_bin_ver}} -m pip --no-cache-dir install -I -U {{tensorflow_whl}}"
+  args:
+    chdir: "{{python_venv_prefix}}"
+
+# initialize jupyter-notebook
+
+- command: "bin/jupyter-notebook --generate-config"
+  args:
+    chdir: "{{python_venv_prefix}}"

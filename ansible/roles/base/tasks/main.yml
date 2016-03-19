@@ -1,0 +1,43 @@
+---
+# vim: ft=yaml st=2 sts=2 sw=2 tw=0:
+
+# build python
+
+- dnf: name={{item}} state=present
+  with_items:
+    - atlas-devel
+    - lapack-devel
+    - blas-devel
+  become: yes
+
+- file:
+    src: /usr/lib64/atlas/libsatlas.so
+    dest: /usr/lib64/atlas/libcblas.so
+    state: link
+
+- include: python.yml
+  vars:
+    python_configure: >-
+      ./configure
+      --prefix="/opt/python/{{python_ver}}"
+    python_prefix: "/opt/python/{{python_ver}}"
+    python_src_url: "https://www.python.org/ftp/python/{{python_ver}}/Python-{{python_ver}}.tgz"
+    python_src: "{{work_dir}}/python/Python-{{python_ver}}.tgz"
+    python_src_dir: "{{work_dir}}/python/Python-{{python_ver}}"
+
+# set up firewall
+
+- service:
+    name: firewalld.service
+    state: started
+    enabled: yes
+
+- firewalld:
+    port: 8888/tcp
+    permanent: yes
+    state: enabled
+
+- service:
+    name: firewalld.service
+    state: reloaded
+    enabled: yes
