@@ -1,5 +1,9 @@
 _sync_dir='/home/vagrant/sync'
 
+if [ ! -d /home/vagrant/work ] ; then
+	mkdir -p /home/vagrant/work
+fi
+
 yum clean all
 
 if [ -z `rpm -qa | grep python-dnf` ] ; then
