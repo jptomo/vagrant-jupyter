@@ -17,7 +17,7 @@
 
 - command: >-
     bin/python{{python_bin_ver}} -m pip --no-cache-dir install -I -U
-    jupyter numpy pandas scipy scikit-learn matplotlib
+    jupyter numpy pandas scipy scikit-learn matplotlib Pillow
   args:
     chdir: "{{python_venv_prefix}}"
 
