@@ -24,8 +24,6 @@
     - tk-devel
     - tcl-devel
     - expat-devel
-    # deps: Pillow
-    - libjpeg-turbo-devel
   become: yes
   when: not stat_python_bin.stat.exists
 

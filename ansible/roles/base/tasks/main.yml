@@ -8,6 +8,14 @@
     - atlas-devel
     - lapack-devel
     - blas-devel
+    # deps: pandas
+    - gcc-c++
+    # deps: matplotlib
+    - libpng-devel
+    # deps: pyzmq
+    - zeromq3-devel
+    # deps: Pillow
+    - libjpeg-turbo-devel
   become: yes
 
 - file:

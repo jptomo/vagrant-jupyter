@@ -14,5 +14,5 @@
 
 - service:
     name: jupyter.service
-    state: started
+    state: restarted
     enabled: yes

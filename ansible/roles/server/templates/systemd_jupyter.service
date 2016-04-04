@@ -2,7 +2,7 @@
 Description = jupyter-notebook
 
 [Service]
-ExecStart = /home/vagrant/pyvenv{{python_ver|replace('.', '')}}/bin/jupyter-notebook --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=/home/vagrant/sync
+ExecStart = /home/vagrant/pyvenv{{python_ver|replace('.', '')}}/bin/jupyter-notebook --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=/home/vagrant/work
 Restart = always
 Type = simple
 User = vagrant
